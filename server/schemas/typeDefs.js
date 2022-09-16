@@ -9,6 +9,8 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        todos: [Todo]
+        
     }
 
     type Todo {
@@ -16,6 +18,7 @@ const typeDefs = gql`
         todo: String
         completed: Boolean
         userId: String
+        user: User
     }
 
     type Query {

@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Todo} = require('../models');
 
 const resolvers = {
     Query: {
@@ -23,6 +23,17 @@ const resolvers = {
             } catch (error) {
                 throw new Error(error);
             }
+        }
+    },
+    // Field Resolvers
+    User: {
+        todos: async (root) => {
+            return await Todo.find({userId: root._id});
+        }
+    },
+    Todo: {
+        user: async (root) => {
+            return await User.findById(root.userId);
         }
     }
 };
